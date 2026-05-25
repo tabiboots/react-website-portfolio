@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #fafaf9;
+  --fg: #0e0e0e;
+  --muted: #717171;
+  --hairline: #e7e5e4;
+  --accent: #e63022;
+  --sans: "Helvetica Neue", Helvetica, "Neue Haas Grotesk", Arial, sans-serif;
+  --serif: "Newsreader", Georgia, serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  /* Keep in sync with Header padding + logo height */
+  --header-h: 125px;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0e0e;
+  --fg: #f5f5f4;
+  --muted: #8a8a87;
+  --hairline: #262624;
+  --accent: #ff4c3d;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background 220ms ease, color 220ms ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* Mono metadata label — font, size, case, tracking, color */
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Striped placeholder for missing images */
+.placeholder {
+  background:
+    repeating-linear-gradient(135deg, var(--hairline) 0 1px, transparent 1px 14px),
+    var(--bg);
+  border: 1px solid var(--hairline);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.route-fade {
+  animation: fade 280ms ease both;
+}

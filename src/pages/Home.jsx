@@ -5,8 +5,9 @@ import { Footer } from '../components/Footer'
 import { SidewaysBio } from '../components/SidewaysBio'
 import { Media } from '../components/Media'
 import { PROJECTS } from '../data/projects'
+import { useIsMobile } from '../hooks/useIsMobile'
 
-function ProjectRow({ p, index, isHover, anyHover, onHover, isLast }) {
+function ProjectRow({ p, isHover, anyHover, onHover, isLast }) {
   const dim = anyHover && !isHover
   return (
     <li
@@ -18,15 +19,13 @@ function ProjectRow({ p, index, isHover, anyHover, onHover, isLast }) {
         to={`/project/${p.slug}`}
         style={{
           display: 'grid',
-          gridTemplateColumns: '60px 360px 1fr auto',
+          gridTemplateColumns: 'clamp(180px, 25vw, 360px) 1fr auto',
           alignItems: 'center',
           gap: 32,
           padding: '28px 0',
           color: p.accent ? 'var(--accent)' : 'var(--fg)',
         }}
       >
-        <span className="mono">{String(index + 1).padStart(2, '0')}</span>
-
         <div style={{ transform: isHover ? 'scale(1.02)' : 'scale(1)', transition: 'transform 380ms cubic-bezier(.2,.7,.2,1)' }}>
           <Media
             media={p.cover}
@@ -36,6 +35,7 @@ function ProjectRow({ p, index, isHover, anyHover, onHover, isLast }) {
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
           <h2
+            className="project-title"
             style={{
               fontSize: 26,
               fontWeight: 600,
@@ -82,16 +82,56 @@ function ProjectRow({ p, index, isHover, anyHover, onHover, isLast }) {
   )
 }
 
+function MobileHome() {
+  return (
+    <div className="route-fade">
+      <Header />
+      <main style={{ padding: '0 20px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '28px 0 16px', borderBottom: '1px solid var(--hairline)' }}>
+          <span className="mono">Selected work</span>
+          <span className="mono">{PROJECTS.length} projects</span>
+        </div>
+
+        <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+          {PROJECTS.map((p, i) => (
+            <li key={p.slug} style={{ borderBottom: i === PROJECTS.length - 1 ? 'none' : '1px solid var(--hairline)', padding: '24px 0 28px' }}>
+              <Link to={`/project/${p.slug}`} style={{ display: 'flex', flexDirection: 'column', gap: 14, color: p.accent ? 'var(--accent)' : 'var(--fg)' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <span className="mono" style={{ color: p.accent ? 'var(--accent)' : 'var(--muted)' }}>{p.year}</span>
+                </div>
+                <Media media={p.cover} style={{ aspectRatio: '3/2' }} />
+                <div>
+                  <h2 style={{ fontSize: 22, fontWeight: 600, margin: 0, letterSpacing: '-0.012em', lineHeight: 1.15, textWrap: 'balance' }}>
+                    {p.title}
+                  </h2>
+                  <p style={{ fontFamily: 'var(--serif)', fontSize: 15, lineHeight: 1.5, color: 'var(--muted)', margin: '10px 0 0', textWrap: 'pretty' }}>
+                    {p.summary}
+                  </p>
+                  <span className="mono" style={{ display: 'block', marginTop: 12 }}>{p.medium}</span>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ol>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
 export default function Home() {
   const [hoverSlug, setHoverSlug] = useState(null)
+  const mobile = useIsMobile()
+
+  if (mobile) return <MobileHome />
 
   return (
     <div className="route-fade">
       <Header />
       <SidewaysBio />
 
-      <main style={{ display: 'grid', gridTemplateColumns: '120px 1fr', padding: '0 56px' }}>
-        <div /> {/* spacer — SidewaysBio is position:fixed, this just reserves the rail */}
+      <main className="home-main" style={{ display: 'grid', gridTemplateColumns: '120px 1fr', padding: '0 var(--gutter)', maxWidth: 'var(--max-w)', margin: '0 auto' }}>
+        <div />
 
         <section style={{ padding: '8px 0 0' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', padding: '20px 0 18px', borderBottom: '1px solid var(--hairline)' }}>

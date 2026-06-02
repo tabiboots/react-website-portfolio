@@ -14,6 +14,7 @@ export default function ProjectDetail() {
     if (idx < 0) return
     const onKey = (e) => {
       if (e.target?.tagName === 'INPUT' || e.target?.tagName === 'TEXTAREA') return
+      if (document.body.style.overflow === 'hidden') return
       if (e.key === 'ArrowRight' && idx < PROJECTS.length - 1) navigate(`/project/${PROJECTS[idx + 1].slug}`)
       else if (e.key === 'ArrowLeft' && idx > 0) navigate(`/project/${PROJECTS[idx - 1].slug}`)
       else if (e.key === 'Escape') navigate('/')

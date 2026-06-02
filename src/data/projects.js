@@ -57,12 +57,13 @@
 // Projects appear on the home page in the order they are listed in the array
 // below. Drag to reorder.
 
-import indulge from './projects/indulge'
-import tv from './projects/tv'
+import indulge from './projects/indulge.jsx'
+import tv from './projects/tv.jsx'
 import keepingReceipts from './projects/keeping-receipts'
 
 export const PROJECTS = [
-  indulge,
-  tv,
-  keepingReceipts,
+    tv,
+    keepingReceipts,
+    indulge,
+
 ]

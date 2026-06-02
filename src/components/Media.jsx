@@ -12,7 +12,29 @@ export function Media({ media, style, className }) {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
+          objectPosition: media.objectPosition || 'center',
           aspectRatio: media.ratio || undefined,
+          ...style,
+        }}
+      />
+    )
+  }
+
+  if (media.kind === 'video' && media.src) {
+    return (
+      <video
+        src={media.src}
+        autoPlay
+        loop
+        muted
+        playsInline
+        className={className}
+        style={{
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition: media.objectPosition || 'center',
+          pointerEvents: 'none',
           ...style,
         }}
       />

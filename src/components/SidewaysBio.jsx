@@ -6,7 +6,7 @@ export function SidewaysBio({ text = BIO }) {
     <p
       style={{
         position: 'fixed',
-        left: 56,
+        left: 'var(--gutter)',
         top: 'calc(var(--header-h) + 20px)',
         margin: 0,
         fontSize: 13,
@@ -14,7 +14,7 @@ export function SidewaysBio({ text = BIO }) {
         color: 'var(--fg)',
         writingMode: 'vertical-rl',
         transform: 'rotate(180deg)',
-        maxHeight: 'calc(100vh - var(--header-h) - 150px)',
+        height: 'calc(100vh - var(--header-h) - 150px)',
         overflow: 'hidden',
         pointerEvents: 'none',
         zIndex: 10,

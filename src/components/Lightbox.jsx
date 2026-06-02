@@ -69,6 +69,15 @@ export function Lightbox({ images, index, onClose, onIndex }) {
             alt={img.caption || ''}
             style={{ maxWidth: '100%', maxHeight: '78vh', objectFit: 'contain' }}
           />
+        ) : img.kind === 'video' && img.src ? (
+          <video
+            src={img.src}
+            controls
+            autoPlay
+            loop
+            playsInline
+            style={{ maxWidth: '100%', maxHeight: '78vh', outline: 'none', display: 'block', margin: '0 auto' }}
+          />
         ) : (
           <div
             className="placeholder"

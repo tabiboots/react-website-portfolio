@@ -5,7 +5,7 @@ export function useProjectImages(project) {
   for (const b of project.blocks || []) {
     if (b.kind === 'image' || b.kind === 'lede-image') images.push(b)
     if (b.kind === 'image-pair' || b.kind === 'image-grid') images.push(...b.images)
-    if (b.kind === 'video' && b.poster) images.push(b.poster)
+    if (b.kind === 'video') images.push(b.poster ?? b)
   }
   return images
 }

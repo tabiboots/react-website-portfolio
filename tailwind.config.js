@@ -11,7 +11,7 @@ export default {
         accent: 'var(--accent)',
       },
       fontFamily: {
-        sans: ['"Helvetica Neue"', 'Helvetica', '"Neue Haas Grotesk"', 'Arial', 'sans-serif'],
+        sans: ['"Inter"', '"Helvetica Neue"', 'Helvetica', 'Arial', 'sans-serif'],
         serif: ['Newsreader', 'Georgia', 'serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', '"SF Mono"', 'Menlo', 'monospace'],
       },

@@ -63,7 +63,7 @@ import keepingReceipts from './projects/keeping-receipts'
 
 export const PROJECTS = [
     tv,
-    keepingReceipts,
     indulge,
+    keepingReceipts
 
 ]

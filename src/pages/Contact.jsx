@@ -25,12 +25,12 @@ export default function Contact() {
             <dl style={{ margin: 0, display: 'grid', gridTemplateColumns: '120px 1fr', rowGap: 14, columnGap: 24 }}>
               <dt className="mono">Email</dt>
               <dd style={{ margin: 0 }}>
-                <a href="mailto:hello@tabicass.com" style={{ borderBottom: '1px solid currentColor' }}>
-                  hello@tabicass.com
+                <a href="mailto:tabiarchive@gmail.com" style={{ borderBottom: '1px solid currentColor' }}>
+                  tabiarchive@gmail.com
                 </a>
               </dd>
               <dt className="mono">Studio</dt>
-              <dd style={{ margin: 0 }}>Brooklyn, NY · West Toronto</dd>
+              <dd style={{ margin: 0 }}>Brooklyn, NY</dd>
               <dt className="mono">Instagram</dt>
               <dd style={{ margin: 0 }}>
                 <a href="https://instagram.com/tabi.sock" target="_blank" rel="noreferrer" style={{ borderBottom: '1px solid currentColor' }}>
@@ -45,12 +45,9 @@ export default function Contact() {
               </dd>
               <dt className="mono">CV</dt>
               <dd style={{ margin: 0 }}>
-                <a href="#" style={{ borderBottom: '1px solid currentColor' }}>Download PDF ↗</a>
+                <a href="/files/tabi-cass-cv.pdf" target="_blank" rel="noreferrer" style={{ borderBottom: '1px solid currentColor' }}>Download PDF ↗</a>
               </dd>
             </dl>
-            <p style={{ fontFamily: 'var(--serif)', fontStyle: 'italic', fontSize: 17, lineHeight: 1.55, color: 'var(--muted)', margin: 0 }}>
-              [Add a note about commissions, studio visits, etc.]
-            </p>
           </div>
           <span />
         </div>
